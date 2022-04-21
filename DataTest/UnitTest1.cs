@@ -13,18 +13,18 @@ namespace DataTest
         public void BallsCollectionTest()
         {
             bc = new BallsCollection();
-            b1 = new Ball(new Vector2(1, 2), 1);
-            b2 = new Ball(new Vector2(11, 7), 1);
-            b3 = new Ball(new Vector2(3, 5), 1);
+            b1 = new Ball(new Vector2(1, 2), 1, new Vector2(0, 0));
+            b2 = new Ball(new Vector2(11, 7), 1, new Vector2(0, 0));
+            b3 = new Ball(new Vector2(3, 5), 1, new Vector2(0, 0));
 
 
-            Assert.AreEqual(bc.BallsCount(), 0);
+            Assert.AreEqual(bc.GetBallsCount(), 0);
             bc.AddBall(b1);
-            Assert.AreEqual(bc.BallsCount(), 1);
+            Assert.AreEqual(bc.GetBallsCount(), 1);
             bc.AddBall(b2);
-            Assert.AreEqual(bc.BallsCount(), 2);
+            Assert.AreEqual(bc.GetBallsCount(), 2);
             bc.AddBall(b3);
-            Assert.AreEqual(bc.BallsCount(), 3);
+            Assert.AreEqual(bc.GetBallsCount(), 3);
 
             Assert.AreEqual(b1, bc.GetBall(0));
             Assert.AreEqual(b2, bc.GetBall(1));

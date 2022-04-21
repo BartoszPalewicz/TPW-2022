@@ -4,7 +4,7 @@ using System.Numerics;
 
 namespace Logic
 {
-    public class BallsLogic
+    public class BallsLogic : LogicAPI
     {
         public BallsCollection Balls { get; set; }
         public Table Table { get; set; }
@@ -35,6 +35,7 @@ namespace Logic
             }
 
             b.Position = b.Position + b.Velocity;
+            InvokePositionChangedEvent(b);
         }
     }
 }

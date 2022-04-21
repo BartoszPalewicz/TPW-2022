@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Data
 {
-    public class BallsCollection
+    public class BallsCollection : DataAPI
     {
         private List<Ball> balls;
 
@@ -13,16 +13,16 @@ namespace Data
             balls = new List<Ball>();
         }
 
-        public int BallsCount()
+        public override int GetBallsCount()
         {
             return balls.Count;
         }
-        public void AddBall(Ball ball)
+        public override void AddBall(Ball ball)
         {
             balls.Add(ball);
         }
 
-        public Ball GetBall(int index)
+        public override Ball GetBall(int index)
         {
             return balls[index];
         }
