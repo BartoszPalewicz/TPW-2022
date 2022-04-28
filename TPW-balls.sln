@@ -3,17 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{AC093E72-4D57-424F-B123-82F233D19ADC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{AC093E72-4D57-424F-B123-82F233D19ADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTest", "DataTest\DataTest.csproj", "{2533E81F-5B69-466E-86F0-BDD97685623E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTest", "DataTest\DataTest.csproj", "{2533E81F-5B69-466E-86F0-BDD97685623E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{BDEC5DDD-AF16-48A0-99AE-ADA72E97F4AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "Logic\Logic.csproj", "{BDEC5DDD-AF16-48A0-99AE-ADA72E97F4AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{F1311F59-361F-4040-8B26-695EB1B3D423}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{E42A9C82-491B-4DBA-9415-C8553608328E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{E42A9C82-491B-4DBA-9415-C8553608328E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "View\View.csproj", "{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel", "ViewModel\ViewModel.csproj", "{3ED67DE6-818E-4108-B42B-CF3E460E0EFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicTest", "LogicTest\LogicTest.csproj", "{B5DD8E05-DC2D-4D2A-BD93-36F4B63299B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{80DC403B-B0F0-4A70-9306-28C8CBF7B844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +47,18 @@ Global
 		{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED67DE6-818E-4108-B42B-CF3E460E0EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED67DE6-818E-4108-B42B-CF3E460E0EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED67DE6-818E-4108-B42B-CF3E460E0EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED67DE6-818E-4108-B42B-CF3E460E0EFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5DD8E05-DC2D-4D2A-BD93-36F4B63299B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5DD8E05-DC2D-4D2A-BD93-36F4B63299B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5DD8E05-DC2D-4D2A-BD93-36F4B63299B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5DD8E05-DC2D-4D2A-BD93-36F4B63299B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80DC403B-B0F0-4A70-9306-28C8CBF7B844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80DC403B-B0F0-4A70-9306-28C8CBF7B844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80DC403B-B0F0-4A70-9306-28C8CBF7B844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80DC403B-B0F0-4A70-9306-28C8CBF7B844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +66,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{E42A9C82-491B-4DBA-9415-C8553608328E} = {F1311F59-361F-4040-8B26-695EB1B3D423}
 		{0E7EA8BB-97D8-491B-9E3C-6AB8BC05A392} = {F1311F59-361F-4040-8B26-695EB1B3D423}
+		{3ED67DE6-818E-4108-B42B-CF3E460E0EFE} = {F1311F59-361F-4040-8B26-695EB1B3D423}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BADCBB40-9633-448A-A151-01E7EF469EA0}
