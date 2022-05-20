@@ -8,6 +8,8 @@ namespace Data
     public abstract class DataAPI
     {
         public abstract void AddBall(Ball b);
+
+        public abstract void RemoveLastBall();
         public abstract Ball GetBall(int i);
         public abstract int GetBallsCount();
         

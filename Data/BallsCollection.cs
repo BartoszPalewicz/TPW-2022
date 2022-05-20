@@ -21,7 +21,10 @@ namespace Data
         {
             balls.Add(ball);
         }
-
+        public override void RemoveLastBall()
+        {
+            balls.Remove(balls[balls.Count - 1]);
+        }
         public override Ball GetBall(int index)
         {
             return balls[index];
