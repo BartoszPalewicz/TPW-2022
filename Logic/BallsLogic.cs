@@ -3,14 +3,12 @@ using Data;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
-
 namespace Logic
 {
     public class BallsLogic : LogicAPI
     {
         public BallsCollection Balls { get; set; }
         public Table Table { get; set; }
-
 
         public CancellationTokenSource CancelSimulationSource { get; private set; }
 
@@ -28,13 +26,34 @@ namespace Logic
             base.onPositionChange(args);
         }
 
+        public void createBall(double r)
+        {
+            var rng = new Random();
+            var x = ((double)rng.NextDouble() * (Table.Width - (2 * r)) + r);
+            var y = ((double)rng.NextDouble() * (Table.Height - (2 * r)) + r);
+        }
+        public void Move(Ball b)
+        {
+            Vector2 featurePosition = b.Position + b.Velocity;
+            if (featurePosition.X - b.Radius < 0 && featurePosition.X + b.Radius > Table.Width)
+            {
+                b.Velocity = b.Velocity * new Vector2(1, -1);
+            }
+
+            if (featurePosition.Y - b.Radius < 0 && featurePosition.Y + b.Radius > Table.Height)
+            {
+                b.Velocity = b.Velocity * new Vector2(-1, 1);
+            }
+
+            b.Position = b.Position + b.Velocity;
+        }
 
         public override void addBalls(int numberOfBalls)
         {
             var rng = new Random();
             for (int i = 0; i < numberOfBalls; i++)
             {
-                
+
                 var r = (rng.NextDouble() * 20) + 20;
                 var x = (rng.NextDouble() * (Table.Width - (2 * r)) + r);
                 var y = (rng.NextDouble() * (Table.Height - (2 * r)) + r);
@@ -47,7 +66,7 @@ namespace Logic
 
         public override void removeBalls(int numberOfBalls)
         {
-            for(int i = 0; i < numberOfBalls; i++)
+            for (int i = 0; i < numberOfBalls; i++)
             {
                 Balls.RemoveLastBall();
             }
@@ -66,7 +85,7 @@ namespace Logic
 
             for (var i = 0; i < Balls.GetBallsCount(); i++)
             {
-                var ball = new MovableBall(Balls.GetBall(i), i, this, Table.Width, Table.Height, this.Balls);
+                var ball = new MovableBall(Balls.GetBall(i), i, this, Table.Width, Table.Height, Balls);
                 ball.PositionChange += (_, args) => onPositionChange(ball);
                 Task.Factory.StartNew(ball.Move, CancelSimulationSource.Token);
             }

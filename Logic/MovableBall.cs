@@ -63,7 +63,6 @@ namespace Logic
                     }
                 }
 
-
                 this.ball.Position = this.ball.Position + this.ball.Velocity;
                 PositionChange?.Invoke(this, this);
                 await Task.Delay(20, owner.CancelSimulationSource.Token).ContinueWith(_ => { });
