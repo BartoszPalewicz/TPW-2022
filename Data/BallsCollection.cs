@@ -7,6 +7,7 @@ namespace Data
     public class BallsCollection : DataAPI
     {
         private List<Ball> balls;
+        public readonly object BallsLock = new object();
 
         public BallsCollection()
         {

@@ -42,6 +42,20 @@ namespace Logic
             {
                 Vector2 featurePosition = this.ball.Position + this.ball.Velocity;
 
+                lock (Balls.BallsLock)
+                {
+                    for (int i = 0; i < Balls.GetBallsCount(); i++)
+                    {
+                        Ball otherBall = Balls.GetBall(i);
+                        if (Vector2.Distance(featurePosition, otherBall.Position) < (this.ball.Radius / 2 + otherBall.Radius / 2))
+                        {
+                            Vector2 p = this.ball.Velocity;
+                            this.ball.Velocity = otherBall.Velocity;
+                            otherBall.Velocity = p;
+                        }
+                    }
+                }
+
                 if (featurePosition.X  < 0 || featurePosition.X + this.ball.Radius > this.boundryX)
                 {
                     this.ball.Velocity = this.ball.Velocity * new Vector2(-1, 1);
@@ -50,17 +64,6 @@ namespace Logic
                 if (featurePosition.Y  < 0 || featurePosition.Y + this.ball.Radius > this.boundryY)
                 {
                     this.ball.Velocity = this.ball.Velocity * new Vector2(1, -1);
-                }
-
-                for(int i = 0; i < Balls.GetBallsCount(); i++)
-                {
-                    Ball otherBall = Balls.GetBall(i);
-                    if(Vector2.Distance(featurePosition, otherBall.Position) < (this.ball.Radius/2 + otherBall.Radius/2))
-                    {
-                        Vector2 p = this.ball.Velocity;
-                        this.ball.Velocity = otherBall.Velocity;
-                        otherBall.Velocity = p;
-                    }
                 }
 
                 this.ball.Position = this.ball.Position + this.ball.Velocity;
