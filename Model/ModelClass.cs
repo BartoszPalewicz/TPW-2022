@@ -29,7 +29,7 @@ namespace Model
         {
             boardWidth = 650;
             boardHeight = 400;
-            logic = new BallsLogic(boardWidth, boardHeight);
+            logic = new BallsLogic(boardWidth, boardHeight, true);
             ballsNumber = 0;
 
             logic.PositionChangedEvent += (sender, b) =>
@@ -46,7 +46,7 @@ namespace Model
         public void StopSimulation()
         {
             logic.stopSimulation();
-            logic = new BallsLogic(boardWidth, boardHeight);
+            logic = new BallsLogic(boardWidth, boardHeight, true);
             logic.PositionChangedEvent += (sender, b) =>
             {
                 BallPositionChange?.Invoke(this, new OnPositionChangeUiAdapterEventArgs(b.GetBall().Position, b.id));

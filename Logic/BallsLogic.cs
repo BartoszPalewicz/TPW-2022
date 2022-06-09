@@ -14,14 +14,20 @@ namespace Logic
         public CancellationTokenSource CancelSimulationSource { get; private set; }
 
         private bool _started = false;
-        private Logger logger = new Logger(@"C:\Users\gredo\Desktop\Ball.log");
+        private Logger logger;
         private Clock _clock;
+        private bool _loggingEnable;
 
-        public BallsLogic(double w, double h)
+        public BallsLogic(double w, double h, bool loggingEnable)
         {
             Table = new Table(w, h);
             Balls = new BallsCollection();
             CancelSimulationSource = new CancellationTokenSource();
+            _loggingEnable = loggingEnable;
+            if (loggingEnable)
+            {
+                logger = new Logger(@"C:\Users\gredo\Desktop\Ball.log");
+            }
         }
 
         protected override void onPositionChange(MovableBall args)
@@ -84,8 +90,10 @@ namespace Logic
         {
 
             if (CancelSimulationSource.IsCancellationRequested) return;
-            _clock = new Clock(LogData, 2000);
-            _clock.Start();
+            if (_loggingEnable){
+                _clock = new Clock(LogData, 2000);
+                _clock.Start();
+            }
             CancelSimulationSource = new CancellationTokenSource();
 
             for (var i = 0; i < Balls.GetBallsCount(); i++)

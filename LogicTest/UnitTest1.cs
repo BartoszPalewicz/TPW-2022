@@ -16,7 +16,7 @@ namespace LogicTest
         public void EventTest()
         {
 			var interactionCount = 0;
-			LogicAPI bl = new BallsLogic(200, 200);
+			LogicAPI bl = new BallsLogic(200, 200, false);
 			bl.addBalls(10);
 			Assert.AreEqual(10, bl.getBallsCount());
 
@@ -29,7 +29,6 @@ namespace LogicTest
 			bl.PositionChangedEvent += (_, _) =>
 			{
 				interactionCount++;
-				Console.WriteLine("xd");
 				if (interactionCount >= 50)
 				{
 					bl.stopSimulation();
@@ -56,7 +55,7 @@ namespace LogicTest
 		[TestMethod]
 		public void BallTest()
 		{
-			LogicAPI bl = new BallsLogic(200, 200);
+			LogicAPI bl = new BallsLogic(200, 200, false);
 			bl.addBalls(10);
 			Assert.AreEqual(10, bl.getBallsCount());
 			bl.removeBalls(2);
@@ -69,7 +68,7 @@ namespace LogicTest
 		public void MoveTest()
 		{
 			var interactionCount = 0;
-			LogicAPI bl = new BallsLogic(200, 200);
+			LogicAPI bl = new BallsLogic(200, 200, false);
 			bl.addBalls(3);
 			var startPositionList = new List<Vector2>();
 			for (int i = 0; i < bl.getBallsCount(); i++)
