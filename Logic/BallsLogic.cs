@@ -3,6 +3,7 @@ using Data;
 using System.Numerics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Runtime.CompilerServices;
 namespace Logic
 {
     public class BallsLogic : LogicAPI
@@ -13,6 +14,8 @@ namespace Logic
         public CancellationTokenSource CancelSimulationSource { get; private set; }
 
         private bool _started = false;
+        private Logger logger = new Logger(@"C:\Users\gredo\Desktop\Ball.log");
+        private Clock _clock;
 
         public BallsLogic(double w, double h)
         {
@@ -79,8 +82,10 @@ namespace Logic
 
         public override void startSimulation()
         {
-            if (CancelSimulationSource.IsCancellationRequested) return;
 
+            if (CancelSimulationSource.IsCancellationRequested) return;
+            _clock = new Clock(LogData, 2000);
+            _clock.Start();
             CancelSimulationSource = new CancellationTokenSource();
 
             for (var i = 0; i < Balls.GetBallsCount(); i++)
@@ -90,6 +95,18 @@ namespace Logic
                 Task.Factory.StartNew(ball.Move, CancelSimulationSource.Token);
             }
 
+        }
+
+        private void LogData ()
+        {
+            for (int i = 0; i < Balls.GetBallsCount(); i++)
+            {
+                lock (Balls.BallsLock)
+                {
+                    logger.log("Ball " + i + "\t\tX: " + Balls.GetBall(i).Position.X + "\tY: " + Balls.GetBall(i).Position.Y);
+
+                }
+            }
         }
 
 
